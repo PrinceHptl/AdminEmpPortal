@@ -5232,11 +5232,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ASPdotnet\\API_Dotnet\\API_Dotnet.csproj",
+      "projectUniqueName": "D:\\DotnetWebApi\\AdminEmpPortal\\API_Dotnet.csproj",
       "projectName": "API_Dotnet",
-      "projectPath": "D:\\ASPdotnet\\API_Dotnet\\API_Dotnet.csproj",
+      "projectPath": "D:\\DotnetWebApi\\AdminEmpPortal\\API_Dotnet.csproj",
       "packagesPath": "C:\\Users\\princ\\.nuget\\packages\\",
-      "outputPath": "D:\\ASPdotnet\\API_Dotnet\\obj\\",
+      "outputPath": "D:\\DotnetWebApi\\AdminEmpPortal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
