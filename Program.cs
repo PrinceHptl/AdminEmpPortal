@@ -1,3 +1,4 @@
+using System.Text;
 using API_Dotnet.Data;
 using API_Dotnet.Models;
 using API_Dotnet.Services;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,26 +20,26 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddRouting();
 //for entity framework
-builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
    builder.Configuration.GetConnectionString("ConnStr")
 ));
 //for identity
-builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
-//Add Authentication
-builder.Services.AddAuthentication(Options=>{
-    Options.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
-    Options.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
-    Options.DefaultScheme=JwtBearerDefaults.AuthenticationScheme;
-});
 
 
 //Adding all scop here later i will create service extension class and add all scope there rather in program,cs file
-builder.Services.AddScoped<IAccountservice,Accountservice>();
+builder.Services.AddScoped<IAccountservice, Accountservice>();
 
-
+//Add Authentication
+builder.Services.AddAuthentication(Options =>
+{
+    Options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    Options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    Options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
 
 
 //Add jwt bearer
@@ -52,13 +54,30 @@ builder.Services.AddScoped<IAccountservice,Accountservice>();
 //         ValidIssuer=builder.Configuration["JWT:ValidIssuer"],
 //         IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
 //     };
-    
+
 // });
 
 
 
 
-                                                                                                                                
+
+//authorization-Add Policy or roles for user 
+builder.Services.AddAuthorization(cfg =>
+           {
+               cfg.AddPolicy("Admin", policy => policy.RequireClaim("type", "Admin"));
+               cfg.AddPolicy("Employee", policy => policy.RequireClaim("type", "Employee"));
+               cfg.AddPolicy("Admin_Employee", policy =>
+                   policy.RequireAssertion(context =>
+                   context.User.HasClaim(c =>
+                   (c.Value == "Admin" ||
+                   c.Value == "Employee"))));
+              
+           });
+
+
+
+
+
 
 
 
@@ -89,7 +108,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API_Dotnet.Data;
 using API_Dotnet.DTOs;
@@ -53,9 +54,10 @@ namespace API_Dotnet.Services
             {
                 return new BadRequestObjectResult(new Error()
                 {
-                    Text = "User registration failed"
+                    Text = "Password should be atleas 6 Character and minimum one character must be in uppercase"
                 });
             }
+            await _userManager.AddClaimAsync(user,new Claim("type","Employee"));
             return new OkObjectResult(new Success()
             {
                      Text="User registration successfull"
