@@ -1,4 +1,5 @@
 using System.Text;
+using AdminEmpPortal.Services;
 using API_Dotnet.Data;
 using API_Dotnet.Models;
 using API_Dotnet.Services;
@@ -23,6 +24,11 @@ builder.Services.AddRouting();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
    builder.Configuration.GetConnectionString("ConnStr")
 ));
+
+
+//for configuration service
+builder.Services.AddSingleton(builder.Configuration);
+
 //for identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -32,6 +38,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
 
 //Adding all scop here later i will create service extension class and add all scope there rather in program,cs file
 builder.Services.AddScoped<IAccountservice, Accountservice>();
+builder.Services.AddScoped<ITokenUtils,TokenUtils>();
 
 //Add Authentication
 builder.Services.AddAuthentication(Options =>
@@ -39,23 +46,23 @@ builder.Services.AddAuthentication(Options =>
     Options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     Options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     Options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-});
+})
 
 
 //Add jwt bearer
-// .AddJwtBearer(Options=>{
-//     Options.SaveToken=true;
-//     Options.RequireHttpsMetadata=false;
-//     Options.TokenValidationParameters=new TokenValidationParameters()
-//     {
-//         ValidateIssuer=true,
-//         ValidateAudience=true,
-//         ValidAudience=builder.Configuration["JWT:ValidAudience"],
-//         ValidIssuer=builder.Configuration["JWT:ValidIssuer"],
-//         IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
-//     };
+.AddJwtBearer(Options=>{
+    Options.SaveToken=true;
+    Options.RequireHttpsMetadata=false;
+    Options.TokenValidationParameters=new TokenValidationParameters()
+    {
+        ValidateIssuer=true,
+        ValidateAudience=true,
+        ValidAudience=builder.Configuration["JWT:ValidAudience"],
+        ValidIssuer=builder.Configuration["JWT:ValidIssuer"],
+        IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"])),
+    };
 
-// });
+});
 
 
 
