@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tuJp2lMzP02lbUTmL46Zr2egbggKT5xdY2XhKuyCeNh7orRjjACXukyClMt/RPYXQIRJgbMgsLhNP8eyrqH6Pg==",
+  "dgSpecHash": "TiNHbQwB8LG82HuQYkXF9+hAV2gU8JuGP0vlSKYVBVe17GT0DEhEky4jafdr1UfvqxNcCEHijPHRZul1rJKj/Q==",
   "success": true,
-  "projectFilePath": "D:\\DotnetWebApi\\AdminEmpPortal\\API_Dotnet.csproj",
+  "projectFilePath": "D:\\DotnetWebApi\\AdminEmpPortal\\AdminEmpPortal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\princ\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\princ\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

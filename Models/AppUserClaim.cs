@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace API_Dotnet.Models
+namespace AdminEmpPortal.Models
 {
     public class AppUserClaim:IdentityUserClaim<int>
     {

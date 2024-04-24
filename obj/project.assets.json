@@ -5232,9 +5232,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DotnetWebApi\\AdminEmpPortal\\API_Dotnet.csproj",
-      "projectName": "API_Dotnet",
-      "projectPath": "D:\\DotnetWebApi\\AdminEmpPortal\\API_Dotnet.csproj",
+      "projectUniqueName": "D:\\DotnetWebApi\\AdminEmpPortal\\AdminEmpPortal.csproj",
+      "projectName": "AdminEmpPortal",
+      "projectPath": "D:\\DotnetWebApi\\AdminEmpPortal\\AdminEmpPortal.csproj",
       "packagesPath": "C:\\Users\\princ\\.nuget\\packages\\",
       "outputPath": "D:\\DotnetWebApi\\AdminEmpPortal\\obj\\",
       "projectStyle": "PackageReference",

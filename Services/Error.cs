@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_Dotnet.Services
+namespace AdminEmpPortal.Services
 {
     public class Error
     {

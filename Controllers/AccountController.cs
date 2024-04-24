@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdminEmpPortal.DTOs;
 using AdminEmpPortal.Models;
-using API_Dotnet.DTOs;
-using API_Dotnet.Services;
+using AdminEmpPortal.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API_Dotnet.Controllers
+namespace AdminEmpPortal.Controllers
 {
     public class AccountController : baseApiController
     {

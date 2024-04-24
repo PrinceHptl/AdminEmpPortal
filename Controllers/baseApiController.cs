@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API_Dotnet.Controllers
+namespace AdminEmpPortal.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

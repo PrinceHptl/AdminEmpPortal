@@ -1,15 +1,11 @@
 using System.Text;
 using AdminEmpPortal.Services;
-using API_Dotnet.Data;
-using API_Dotnet.Models;
-using API_Dotnet.Services;
+using AdminEmpPortal.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
-
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using AdminEmpPortalet.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);

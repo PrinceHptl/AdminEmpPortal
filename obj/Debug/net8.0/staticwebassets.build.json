@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "L/fhVnYImqA79sSYjUpDHtEHMd0Fok1xzVQWZYy2gzw=",
-  "Source": "API_Dotnet",
-  "BasePath": "_content/API_Dotnet",
+  "Hash": "pf7H6BiUuZdZq0rK2eyPP6wZQqb2lxeLIIPdc+Cro9Y=",
+  "Source": "AdminEmpPortal",
+  "BasePath": "_content/AdminEmpPortal",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

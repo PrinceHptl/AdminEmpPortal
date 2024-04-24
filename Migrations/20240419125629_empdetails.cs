@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace API_Dotnet.Migrations
+namespace AdminEmpPortal.Migrations
 {
     /// <inheritdoc />
     public partial class empdetails : Migration
